@@ -26,8 +26,8 @@ Close=[]
 coins=[]
 
 
-for id in range(1,6):
-    DataTime=date_to_timestamp('01/01/2022','31/10/2022')
+for id in range(1,2):
+    DataTime=date_to_timestamp('01/01/2020','31/10/2022')
     url='https://api.coinmarketcap.com/data-api/v3/cryptocurrency/historical?id='+str(id)+'&convertId=2811&timeStart='+DataTime[0]+'&timeEnd='+DataTime[1]
     response = requests.get(url)
     soup = BeautifulSoup(response.text, "html.parser")
@@ -52,3 +52,4 @@ lo={'Cion':coins,'Market_Cap':Market_Cap,'Open':Open,'Date':Date,'High':High,'Lo
 
 df = pd.DataFrame(lo)
 df.to_csv('data.csv')
+print('done')
